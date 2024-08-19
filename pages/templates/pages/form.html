@@ -1,0 +1,28 @@
+{% extends 'pages/base.html' %}
+
+{% block title %}
+    Formulario
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'pages/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Muestra el formulario como párrafos -->
+        <button class="submit-btn" type="submit">Confirmar</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('file-upload').onchange = function (event) {
+        const [file] = event.target.files;
+        if (file) {
+            document.getElementById('photo-preview').src = URL.createObjectURL(file);
+        }
+    };
+</script>
+{% endblock %}
