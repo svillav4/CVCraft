@@ -4,8 +4,8 @@
     Formulario
 {% endblock %}
 
-{% block extra_css %}
-    <link rel="stylesheet" href="{% static 'pages/styles.css' %}">
+{% block header_title %}
+    Formulario
 {% endblock %}
 
 {% block content %}
@@ -16,13 +16,4 @@
         <button class="submit-btn" type="submit">Confirmar</button>
     </form>
 </div>
-
-<script>
-    document.getElementById('file-upload').onchange = function (event) {
-        const [file] = event.target.files;
-        if (file) {
-            document.getElementById('photo-preview').src = URL.createObjectURL(file);
-        }
-    };
-</script>
 {% endblock %}

@@ -8,11 +8,10 @@ class HomePageView(TemplateView):
     template_name = 'pages/home.html'
 
 class FormPageView(FormView):
-    template_name = 'pages/form.html'
-    form_class = MyForm
-    success_url = '/form/'  # URL a la que redirigir después del envío del formulario
+         template_name = 'pages/form.html'
+         form_class = MyForm
+         success_url = '/success/'  # Define una URL de éxito
 
-    def form_valid(self, form):
-        # Procesa los datos del formulario aquí
-        # Ejemplo: guardar los datos en la base de datos, enviar un email, etc.
-        return super().form_valid(form)
+         def form_valid(self, form):
+             # Aquí puedes manejar lo que sucede cuando el formulario es válido
+             return super().form_valid(form)
