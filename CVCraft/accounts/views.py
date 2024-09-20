@@ -5,6 +5,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.shortcuts import redirect
 from django.db import IntegrityError
+from formulario.models import Profile  # Importa el modelo Profile
 # Create your views here.
 
 def signupaccount(request):
@@ -13,19 +14,25 @@ def signupaccount(request):
     else:
         if request.POST['password1'] == request.POST['password2']:
             try:
-                user=User.objects.create_user(request.POST['username'],
-                                          password=request.POST['password1'])
+                user = User.objects.create_user(request.POST['username'],
+                                                password=request.POST['password1'])
                 user.save()
                 login(request, user)
+                
+                # Crear automáticamente un perfil vacío cuando se registra el usuario
+                Profile.objects.create(user=user)
+                
                 return redirect('home')
             except IntegrityError:
-                return render(request, 'signupaccount.html',
-                              {'form':UserCreationForm,
-                               'error': 'Username already taken. Choose new username.'})
+                return render(request, 'signupaccount.html', {
+                    'form': UserCreationForm,
+                    'error': 'Username already taken. Choose new username.'
+                })
         else:
-            return render(request, 'signupaccount.html',
-                          {'form':UserCreationForm, 'error':'Passwords do not match'})
-    
+            return render(request, 'signupaccount.html', {
+                'form': UserCreationForm,
+                'error': 'Passwords do not match'
+            })
 def logoutaccount(request):
     logout(request)
     return redirect('home')
@@ -44,3 +51,4 @@ def loginaccount(request):
         else:
             login(request, user)
             return redirect('home')
+            

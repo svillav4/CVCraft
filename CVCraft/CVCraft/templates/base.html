@@ -14,7 +14,7 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="#">Form</a>
+              <a class="nav-link" href="{% url 'create_profile' %}">Form</a>
             </li>
             <li><a href="{% url 'logoutaccount' %}" class="nav-link">Logout ({{ user.username }})</a></li>
           {% else %}

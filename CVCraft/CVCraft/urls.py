@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', recomendation.home, name='home'),
     path('accounts/', include('accounts.urls')),
+    path('formulario/', include('formulario.urls')),
 ]
