@@ -1,0 +1,12 @@
+body {
+    background-color: #f8f9fa;
+}
+.hero {
+    background: url('https://example.com/hero-image.jpg') no-repeat center center;
+    background-size: cover;
+    height: 50vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

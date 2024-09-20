@@ -1,11 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
-<body>
-    <h2>Crear Perfil</h2>
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }} 
-        <button type="submit">Enviar</button>
-    </form>
-</body>
+<div class="card mb-3">
+    <div class="row g-0">
+        <div>
+            <div class="card-body">
+                <h5 class="card-title">Crear perfil</h5>
+                <p class="card-text">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </form>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}
