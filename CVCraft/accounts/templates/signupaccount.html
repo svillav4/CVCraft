@@ -1,24 +1,41 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-<div class="card mb-3">
-    <div class="row g-0">
-        <div>
-            <div class="card-body">
-                <h5 class="card-title">Sign Up</h5>
-                {% if error %}
-                <div class="alert alert-danger mt-3" role="alert">
-                    {{ error }}
-                </div>
-                {% endif %}
-                <p class="card-text">
-                    <form method="POST">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <button type="submit" class="btn btn-primary">Sign Up</button>
-                    </form>
-                </p>
-            </div>
-        </div>
+<head>
+    {% block style %}
+    <link rel="stylesheet" href="{% static 'css/singup.css' %}">
+    {% endblock style %}
+</head>
+<form class="form">
+    {% if error %}
+    <div class="alert alert-danger mt-3" rote="alert">
+        {{ error }}
     </div>
-</div>
+    {% endif %}
+    <p class="title">Registrate </p>
+    <p class="message">Registrate ahora para crear y mejorar tu CV</p>
+
+    <label>
+        <input class="input" type="text" placeholder="" required="">
+        <span>Nombre de usuario</span>
+    </label> 
+
+    <label>
+        <input class="input" type="email" placeholder="" required="">
+        <span>Correo</span>
+    </label> 
+
+    <label>
+        <input class="input" type="password" placeholder="" required="">
+        <span>Constraseña</span>
+    </label>
+
+    <label>
+        <input class="input" type="password" placeholder="" required="">
+        <span>Confirmar contraseña</span>
+    </label>
+
+    <button class="submit">Enviar</button>
+    <p class="signin">Ya tienes una cuenta? <a href="{% url 'loginaccount' %}">Login</a> </p>
+</form>
 {% endblock content %}

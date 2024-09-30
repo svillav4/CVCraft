@@ -1,24 +1,43 @@
+
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-<div class="card mb-3">
-    <div class="row g-0">
-        <div>
-            <div class="card-body">
-                <h5 class="card-title">Login</h5>
-                {% if error %}
-                <div class="alert alert-danger mt-3" role="alert">
-                    {{ error }}
-                </div>
-                {% endif %}
-                <p class="card-text">
-                    <form method="POST">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <button type="submit" class="btn btn-primary">Login</button>
-                    </form>
-                </p>
-            </div>
-        </div>
+<head>
+    {% block style %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    {% endblock style %}
+</head>
+
+<form class="form">
+    {% if error %}
+    <div class="alert alert-danger mt-3" rote="alert">
+        {{ error }}
     </div>
-</div>
+    {% endif %}
+    <p class="title">Login </p>
+    <p class="message">Entra a tu cuenta ahora</p>
+
+     <div class="input-container">
+       <input placeholder="Ingresa tu correo" type="email">
+       <span>
+         <svg stroke="currentColor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+           <path d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
+         </svg>
+       </span>
+   </div>
+
+   <div class="input-container">
+       <input placeholder="Ingresa tu contraseña" type="password">
+
+       <span>
+         <svg stroke="currentColor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+           <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
+           <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
+         </svg>
+       </span>
+     </div>
+
+    <button class="submit">Enviar</button>
+   <p class="signup-link">No tienes cuenta? <a href="{% url 'signupaccount' %}">Sign up</a> </p>
+</form>
 {% endblock content %}
