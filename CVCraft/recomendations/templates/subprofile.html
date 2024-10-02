@@ -24,6 +24,10 @@
     {% for subprofile in subprofiles%}
         <div class="container d-flex justify-content-center">
             <div class="book">
+                <br>
+                <br>
+                <img src="{{ subprofile.2.url }}"  alt="" style="width: 250px; height: 400px; border-radius: 8px;">
+                <br>
                 <p>informacion personal: </p>
                 <p>Nombre: {{ subprofile.0.curriculum.informacion_personal.nombre}}</p>
                 <p>Telefono: {{ subprofile.0.curriculum.informacion_personal.telefono}}</p>

@@ -14,5 +14,5 @@ def subprofile(request):
     subprofiles=[]
     for i in range(len(profile.occupation_list)):
         ia = recomendacionesIA(request)
-        subprofiles.append([ia.generateSubprofile(i),profile.occupation_list[i]])
+        subprofiles.append([ia.generateSubprofile(i),profile.occupation_list[i], profile.photo])
     return render(request, 'subprofile.html', {'subprofiles':subprofiles})  # Retorna un JSON con los datos generados
