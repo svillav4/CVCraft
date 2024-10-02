@@ -21,14 +21,31 @@
 
 <!-- Características -->
 <section id="card" class="py-5">
-    <div class="container d-flex justify-content-center">
-        <div class="book">
-            <p>1</p>
-            <div class="cover">
-                <p>{{ subprofiles.curriculum.nombre }}</p>
+    {% for subprofile in subprofiles%}
+        <div class="container d-flex justify-content-center">
+            <div class="book">
+                <p>informacion personal: </p>
+                <p>Nombre: {{ subprofile.0.curriculum.informacion_personal.nombre}}</p>
+                <p>Telefono: {{ subprofile.0.curriculum.informacion_personal.telefono}}</p>
+                <p>Email: {{ subprofile.0.curriculum.informacion_personal.email}}</p>
+                <p>Habilidades Tecnicas: {{ subprofile.0.curriculum.secciones.habilidades_tecnicas}}</p>
+                <p>Habilidades Blandas: {{ subprofile.0.curriculum.secciones.habilidades_blandas}}</p>
+                <p>Idiomas: {{ subprofile.0.curriculum.secciones.idiomas}}</p>
+                <p>Hobbies: {{ subprofile.0.curriculum.secciones.hobbies}}</p>
+                {% if subprofile.0.curriculum.secciones.experiencia_laboral %}
+                    <p>Experiencia laboral: {{ subprofile.0.curriculum.secciones.experiencia_laboral }}</p>
+                {% endif %}
+                <p>Educacion: {{ subprofile.0.curriculum.secciones.educacion}}</p>
+                <p>Referencias: {{ subprofile.0.curriculum.secciones.referencias }}</p>
+                <div class="cover">
+                    <p>{{ subprofile.1 }}</p>
+                </div>
             </div>
-       </div>
-    </div>
+        </div>
+        <br>
+        <br>
+        <br>
+    {% endfor %}
 </section>
 </body>
 {% endblock content %}

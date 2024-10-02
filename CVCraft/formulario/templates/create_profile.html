@@ -6,7 +6,10 @@
             <div class="card-body">
                 <h5 class="card-title">Crear perfil</h5>
                 <p><small>Si en alguno de los campos necesita colocar 2 items o mas separelos por coma, por ejemplo: "Desarrollador, Diseñador, Administrador"</small></p>
-                <p><small>Para las referencias ingresarlas de la siguiente manera, en caso de que sean mas de 2 se separa por coma y se sigue con el mismo formato: "Nombre: XXXXXXX - Parentesco: XXXXXX - Numero de contacto: XXXXXX - Correo electronico: XXXXXXX@xxxx.xxx"</small></p>
+                <p><small>Para las referencias ingresarlas de la siguiente manera, en caso de que sean mas de 2 se separa por coma y se sigue con el mismo formato: "Nombre: XXXXXXX - Relacion: XXXXXX - Numero de contacto: XXXXXX "</small></p>
+                <p><small>Para la experiencia laboral por favor decir el nombre de la empresa, el cargo y el tiempo que se estuvo en la empresa.</small></p>
+                <p><small>Para la educacion por favor decir el titulo, el lugar donde lo obtuvo y el año donde lo termino.</small></p>
+                <p><small>Para los idiomas colocarlo de la siguiente manera: idioma(nivel).</small></p>
                 <p class="card-text">
                     <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}

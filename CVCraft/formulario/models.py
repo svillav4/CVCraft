@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=100)
+    PhoneNumber = models.CharField(max_length=10, null=True, blank=True)
+    Email = models.CharField(max_length=100, null=True, blank=True)
     occupation = models.CharField(max_length=100)  # Guardamos las ocupaciones como una cadena separada por comas
     tecnical_information = models.TextField(null=True, blank=True)
     hobbies = models.TextField()
