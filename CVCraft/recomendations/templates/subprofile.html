@@ -32,15 +32,15 @@
                 <p>Nombre: {{ subprofile.0.curriculum.informacion_personal.nombre}}</p>
                 <p>Telefono: {{ subprofile.0.curriculum.informacion_personal.telefono}}</p>
                 <p>Email: {{ subprofile.0.curriculum.informacion_personal.email}}</p>
-                <p>Habilidades Tecnicas: {{ subprofile.0.curriculum.secciones.habilidades_tecnicas}}</p>
-                <p>Habilidades Blandas: {{ subprofile.0.curriculum.secciones.habilidades_blandas}}</p>
-                <p>Idiomas: {{ subprofile.0.curriculum.secciones.idiomas}}</p>
-                <p>Hobbies: {{ subprofile.0.curriculum.secciones.hobbies}}</p>
+                <p>Habilidades Tecnicas: {% for habilidad in subprofile.0.curriculum.secciones.habilidades_tecnicas %} {{ habilidad }}, {% endfor %}</p>
+                <p>Habilidades Blandas: {% for habilidad2 in subprofile.0.curriculum.secciones.habilidades_blandas %} {{ habilidad2 }}, {% endfor %}</p>
+                <p>Idiomas: {% for idioma in subprofile.0.curriculum.secciones.idiomas %} {{ idioma }}, {% endfor %}</p>
+                <p>Hobbies: {% for hobbie in subprofile.0.curriculum.secciones.hobbies %} {{ hobbie }}, {% endfor %}</p>
                 {% if subprofile.0.curriculum.secciones.experiencia_laboral %}
-                    <p>Experiencia laboral: {{ subprofile.0.curriculum.secciones.experiencia_laboral }}</p>
+                    <p>Experiencia laboral: {% for experiencia in subprofile.0.curriculum.secciones.experiencia_laboral %} {{ experiencia }}, {% endfor %}</p>
                 {% endif %}
-                <p>Educacion: {{ subprofile.0.curriculum.secciones.educacion}}</p>
-                <p>Referencias: {{ subprofile.0.curriculum.secciones.referencias }}</p>
+                <p>Educacion: {% for educacion in subprofile.0.curriculum.secciones.educacion %} {{ educacion }}, {% endfor %}</p>
+                <p>Referencias: {% for referencia in subprofile.0.curriculum.secciones.referencias %} {{ referencia }}, {% endfor%}</p>
                 <div class="cover">
                     <p>{{ subprofile.1 }}</p>
                 </div>
