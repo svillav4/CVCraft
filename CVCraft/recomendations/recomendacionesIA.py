@@ -10,15 +10,15 @@ class recomendacionesIA():
         api_key = os.getenv("openai_apikey")
         self.client = OpenAI(api_key=api_key)
 
-    def generateSubprofile(self, idx):
+    def generateSubprofile(self):
         promt = f"""
-        Imagina que eres un consultor de empleo con la tarea de crear un currículum personalizado y llamativo basado en las ofertas actuales para la ocupación de '{self.profile.occupation_list[idx]}'. 
+        Imagina que eres un consultor de empleo con la tarea de crear un currículum personalizado y llamativo basado en las ofertas actuales para la ocupación de '{self.profile.occupation_list[0]}'. 
         Este currículum debe contener información personal del aspirante, como su nombre: '{self.profile.name}', y debe resaltar las siguientes secciones clave:
 
         1. **Habilidades Técnicas**: Incluye las habilidades más relevantes que requiere la ocupación y destaca las proporcionadas por el usuario: {self.profile.tecnical_information}. 
         Además, sugiere las habilidades más demandadas actualmente en la industria para esta ocupación.
         2. **Habilidades Blandas**: Selecciona habilidades blandas que se ajusten mejor a la ocupación, algunas sugeridas son: {self.profile.soft_skills}.
-        3. **Idiomas**: Los idiomas que domina el aspirante: {self.profile.languajes}.
+        3. **Idiomas**: Los idiomas que domina el aspirante: {self.profile.languages}.
         4. **Hobbies**: Incluye los pasatiempos del usuario: {self.profile.hobbies}.
         5. **Experiencia Laboral**: Resalta la experiencia laboral del aspirante, si la tiene: {self.profile.work_experience}.
         6. **Educación**: Incluye títulos y certificaciones relevantes: {self.profile.education}.

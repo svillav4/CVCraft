@@ -1,19 +1,10 @@
 body {
     background-color: #e8e8e8;
 }
-.hero {
-    background-size: cover;
-    height: 50vh;
-    color: rgb(255, 255, 255);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-/* SUBPROFILE */ 
 .book {
     position: relative;
-    border-radius: 10px;
+    border-radius: 5px;
     width: 400px;
     height: 550px;
     background-color: whitesmoke;
@@ -34,7 +25,6 @@ body {
     -ms-flex-pack: center;
     justify-content: center;
     color: #000;
-    overflow: hidden;
   }
   
   .cover {
@@ -61,7 +51,6 @@ body {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
-    overflow: hidden;
   }
   
   .book:hover .cover {
@@ -69,14 +58,11 @@ body {
     transition: all 0.5s;
     -webkit-transform: rotatey(-80deg);
     -ms-transform: rotatey(-80deg);
-    transform: rotatey(-80deg);
-    /*
-    transform: rotateY(-100deg);
-    z-index: -1;
-    */
+    transform: rotatey(-180deg);
+    
   }
   
   p {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bolder;
   }
