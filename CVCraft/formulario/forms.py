@@ -6,7 +6,7 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = [
-            'name', 'occupation', 'hobbies', 'soft_skills', 
+            'name', 'occupation', 'tecnical_information', 'hobbies', 'soft_skills', 
             'languages', 'references', 'education', 'work_experience', 'photo'
         ]
     def clean_occupation(self):

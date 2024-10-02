@@ -17,7 +17,7 @@
               <a class="nav-link" href="{% url 'create_profile' %}">Form</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">View and customize subprofiles</a>
+              <a class="nav-link" href="{% url 'subprofiles' %}">View and customize subprofiles</a>
             </li>
             <li><a href="{% url 'logoutaccount' %}" class="nav-link">Logout ({{ user.username }})</a></li>
           {% else %}
