@@ -1,24 +1,48 @@
 {% extends 'base.html' %}
-{% block content %}
-<div class="card mb-3">
-    <div class="row g-0">
-        <div>
-            <div class="card-body">
-                <h5 class="card-title">Sign Up</h5>
-                {% if error %}
-                <div class="alert alert-danger mt-3" role="alert">
-                    {{ error }}
-                </div>
-                {% endif %}
-                <p class="card-text">
-                    <form method="POST">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <button type="submit" class="btn btn-primary">Sign Up</button>
-                    </form>
-                </p>
-            </div>
-        </div>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Rate </title>
+    {% block style %}
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    {% endblock style %}
+</head>
+<body>
+    {% block content %}
+    <form class="form" method="POST" action="{% url 'signupaccount' %}">
+        {% csrf_token %}
+    
+    {% if error %}
+    <div class="alert alert-danger mt-3" role="alert">
+      {{ error }}
     </div>
-</div>
-{% endblock content %}
+    {% endif %}
+
+    <p class="title">Register </p>
+    <p class="message">Signup now and get full access to our app. </p>
+
+    <label for="{{ form.username.id_for_label }}">
+        <input type="text" class="input" name="username" id="{{ form.username.id_for_label }}" placeholder=" " required>
+        <span>Username</span>
+      </label>
+  
+      <label for="{{ form.password1.id_for_label }}">
+        <input type="password" class="input" name="password1" id="{{ form.password1.id_for_label }}" placeholder=" " required>
+        <span>Password</span>
+      </label>
+  
+      <label for="{{ form.password2.id_for_label }}">
+        <input type="password" class="input" name="password2" id="{{ form.password2.id_for_label }}" placeholder=" " required>
+        <span>Confirm Password</span>
+      </label>
+      
+        <button class="submit">Submit</button>
+        <p class="signin">Already have an acount ? <a href="{% url 'loginaccount' %}">Login</a> </p>
+    </form>
+    {% endblock content %}
+</body>
+</html>

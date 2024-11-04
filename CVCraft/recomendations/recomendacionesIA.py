@@ -14,6 +14,8 @@ class recomendacionesIA():
         promt = f"""
         Imagina que eres un consultor de empleo con la tarea de crear un currículum personalizado y llamativo basado en las ofertas actuales para la ocupación de '{self.profile.occupation_list[idx]}'. 
         
+        Si alguna de las habilidades o la experiencia no tiene relacion con {self.profile.occupation_list[idx]} entonces no lo pongas en json.
+
         Este currículum debe contener información personal del aspirante, como su nombre: '{self.profile.name}', su numero de telofono: {self.profile.PhoneNumber} e email: {self.profile.Email}, y debe resaltar las siguientes secciones clave:
 
         1. **Habilidades Técnicas**: Incluye las habilidades más relevantes que requiere la ocupación y destaca las proporcionadas por el usuario: {self.profile.tecnical_information}. 

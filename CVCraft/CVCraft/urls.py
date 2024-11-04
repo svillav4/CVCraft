@@ -26,4 +26,5 @@ urlpatterns = [
     path('subprofiles/', recomendation.subprofile, name='subprofiles'),
     path('accounts/', include('accounts.urls')),
     path('formulario/', include('formulario.urls')),
+    path('recommendations/', include('recomendations.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
