@@ -1,48 +1,83 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subperfiles</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
-    {% block style %}
-    <link rel="stylesheet" href="{% static 'css/subprofile.css' %}">
-    {% endblock style %}
+    <title>Perfil de Subperfil</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact; /* Para asegurar que los colores se impriman correctamente */
+            }
+            .container {
+                margin: 0; /* Eliminar márgenes para la impresión */
+                padding: 0; /* Eliminar relleno para la impresión */
+            }
+            .book {
+                page-break-after: always; /* Asegurar que cada perfil esté en una nueva página si hay varios */
+            }
+            img {
+                max-width: 100%; /* Asegurar que las imágenes no se desborden */
+                height: auto; /* Mantener la relación de aspecto */
+            }
+        }
+    </style>
 </head>
-
 <body>
 
 <!-- Características -->
 <section id="card" class="py-5">
     <div class="container d-flex justify-content-center">
-        <div class="book">
+        <div class="book text-center">
             <br>
             <br>
-            <img src="{{ subprofile.2 }}"  alt="" style="width: 250px; height: 400px; border-radius: 8px;">
+            <img src="{{ subprofile.2.url }}" alt="Imagen del Subperfil" style="width: 250px; height: 400px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
             <br>
-            <p>informacion personal: </p>
-            <p>Nombre: {{ subprofile.0.curriculum.informacion_personal.nombre}}</p>
-            <p>Telefono: {{ subprofile.0.curriculum.informacion_personal.telefono}}</p>
-            <p>Email: {{ subprofile.0.curriculum.informacion_personal.email}}</p>
-            <p>Habilidades Tecnicas: {% for habilidad in subprofile.0.curriculum.secciones.habilidades_tecnicas %} {{ habilidad }}, {% endfor %}</p>
-            <p>Habilidades Blandas: {% for habilidad2 in subprofile.0.curriculum.secciones.habilidades_blandas %} {{ habilidad2 }}, {% endfor %}</p>
-            <p>Idiomas: {% for idioma in subprofile.0.curriculum.secciones.idiomas %} {{ idioma }}, {% endfor %}</p>
-            <p>Hobbies: {% for hobbie in subprofile.0.curriculum.secciones.hobbies %} {{ hobbie }}, {% endfor %}</p>
+            <h2>Información Personal</h2>
+            <p><strong>Nombre:</strong> {{ subprofile.0.curriculum.informacion_personal.nombre }}</p>
+            <p><strong>Teléfono:</strong> {{ subprofile.0.curriculum.informacion_personal.telefono }}</p>
+            <p><strong>Email:</strong> {{ subprofile.0.curriculum.informacion_personal.email }}</p>
+            <p><strong>Habilidades Técnicas:</strong>
+                {% for habilidad in subprofile.0.curriculum.secciones.habilidades_tecnicas %}
+                    {{ habilidad }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+            <p><strong>Habilidades Blandas:</strong>
+                {% for habilidad2 in subprofile.0.curriculum.secciones.habilidades_blandas %}
+                    {{ habilidad2 }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+            <p><strong>Idiomas:</strong>
+                {% for idioma in subprofile.0.curriculum.secciones.idiomas %}
+                    {{ idioma }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+            <p><strong>Hobbies:</strong>
+                {% for hobbie in subprofile.0.curriculum.secciones.hobbies %}
+                    {{ hobbie }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
             {% if subprofile.0.curriculum.secciones.experiencia_laboral %}
-                <p>Experiencia laboral: {% for experiencia in subprofile.0.curriculum.secciones.experiencia_laboral %} {{ experiencia }}, {% endfor %}</p>
+                <p><strong>Experiencia Laboral:</strong>
+                    {% for experiencia in subprofile.0.curriculum.secciones.experiencia_laboral %}
+                        {{ experiencia }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
             {% endif %}
-            <p>Educacion: {% for educacion in subprofile.0.curriculum.secciones.educacion %} {{ educacion }}, {% endfor %}</p>
-            <p>Referencias: {% for referencia in subprofile.0.curriculum.secciones.referencias %} {{ referencia }}, {% endfor%}</p>
+            <p><strong>Educación:</strong>
+                {% for educacion in subprofile.0.curriculum.secciones.educacion %}
+                    {{ educacion }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+            <p><strong>Referencias:</strong>
+                {% for referencia in subprofile.0.curriculum.secciones.referencias %}
+                    {{ referencia }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
         </div>
     </div>
-    <br>
-    <br>
-    <center>
-        <a href="{% url 'download' subprofile_id index %}" class="btn btn-primary btn-lg">Descargar</a>
-    </center>
-    <br>
-    <br>
 </section>
+
 </body>
-{% endblock content %}
+</html>

@@ -47,12 +47,13 @@ def subprofile(request):
 
 def selected_subprofile(request,subprofile_id, index):
     subprofile = SubprofileData.objects.get(id=subprofile_id).data[index]
-    return render(request, 'selected_subprofile.html',{'subprofile':subprofile, 'subprofile_id':subprofile_id, 'index': index})
+    return render(request, 'selected_subprofile.html',{'subprofile':subprofile, 'id':subprofile_id, 'indice': index})
 
 
-def download_pdf(request, subprofile_id, index):
+def download_pdf(request, id, indice):
+    print(f"Subprofile ID: {id}, Index: {indice}")
     # Suponiendo que obtienes el JSON de algún lugar
-    subprofile = SubprofileData.objects.get(id=subprofile_id).data[index]  # Función que retorna el JSON
+    subprofile = SubprofileData.objects.get(id=id).data[indice]  # Función que retorna el JSON
     
     # Crear respuesta HTTP para PDF
     response = HttpResponse(content_type='application/pdf')
