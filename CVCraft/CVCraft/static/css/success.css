@@ -1,0 +1,88 @@
+.body {
+  background-color: #e8e8e8;
+}
+
+.full-height {
+  height: 100vh; /* Altura completa de la ventana */
+  display: flex;
+  justify-content: center; /* Centrado horizontal */
+  align-items: center; /* Centrado vertical */
+}
+
+.card {
+    width: 280px;
+    height: 200px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 30px;
+    gap: 13px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.062);
+  }
+  
+  .Heading {
+    font-size: 1.2em;
+    font-weight: 800;
+    color: rgb(26, 26, 26);
+  }
+  
+  .Description {
+    text-align: center;
+    font-size: 0.7em;
+    font-weight: 600;
+    color: rgb(99, 99, 99);
+  }
+  
+  .buttonContainer {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+  }
+
+  
+  .acceptButton {
+    width: 100px;
+    height: 40px;
+    background-color: #FFD700;
+    transition-duration: .2s;
+    border: none;
+    color: #000;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 20px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .declineButton {
+    width: 100px;
+    height: 40px;
+    background-color: rgb(218, 218, 218);
+    transition-duration: .2s;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 20px;
+    text-decoration: none;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+
+  }
+  
+  .declineButton:hover {
+    background-color: #e6e4e4;
+    transition-duration: .2s;
+  }
+  
+  .acceptButton:hover {
+    background-color: #e6be00;
+    transition-duration: .2s;
+  }

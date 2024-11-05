@@ -1,4 +1,24 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-<h2>Perfil creado con éxito</h2>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    {% block style %}
+    <link rel="stylesheet" href="{% static 'css/success.css' %}">
+    {% endblock style %}
+</head>
+<body>
+    <div class="full-height">
+        <div class="card text-center">
+            <p class="Heading">Perfil creado con éxito.</p>
+            <p class="Description">Ahora puede ver sus subperfiles.</p>
+            <div class="buttonContainer">
+                <a href="{% url 'subprofile' %}" class="acceptButton">Subperfiles</a>
+                <a href="{% url 'home' %}" class="declineButton">Inicio</a>
+            </div>
+        </div>
+    </div>
+</body>
 {% endblock content %}

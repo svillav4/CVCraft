@@ -35,7 +35,7 @@ class recomendacionesIA():
                                     -'hobbies': [], 
                                     -'experiencia_laboral': ['empresa': '', 'cargo': '', 'duracion': '', ...],
                                     -'educacion': ['titulo': '', 'institucion': '', 'ano': ,...],
-                                    -'referencias': ['nombre': '', 'relacion': '', 'contacto': , ...]
+                                    -'referencias': ['nombre': '', 'relacion-profesion': '', 'contacto': , ...]
         """
 
         msg = [

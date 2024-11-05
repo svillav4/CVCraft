@@ -14,32 +14,16 @@ def home(request):
 
 
 def subprofile(request):
-    # Obtenemos el perfil del usuario actual
-    profile = Profile.objects.filter(user=request.user).first()
-
+        
     # Verificamos si ya existen subperfiles guardados para este usuario
     subprofile_data = SubprofileData.objects.filter(user=request.user).first()
 
-    # Si ya existen subperfiles, los cargamos desde la base de datos
-    if subprofile_data:
-        subprofiles = subprofile_data.data  # Usamos los datos JSON ya guardados
-        subprofile_id = subprofile_data.id  # Accedemos al id existente
-    else:
-        # Si no existen subperfiles guardados, generamos nuevos
-        subprofiles = []
-        ia = recomendacionesIA(request)
-        
-        for i in range(len(profile.occupation_list)):
-            # Generamos el subperfil y lo añadimos a la lista
-            subprofiles.append([ia.generateSubprofile(i), profile.occupation_list[i], profile.photo.url])
-        
-        # Guardamos los nuevos subperfiles en la base de datos y obtenemos el id
-        new_subprofile_data = SubprofileData.objects.create(
-            user=request.user,
-            data=subprofiles,
-            occupation_count=len(profile.occupation_list)
-        )
-        subprofile_id = new_subprofile_data.id  # Almacenamos el id del nuevo objeto
+    if not subprofile_data.data:
+        # Si no hay subperfiles, redirige a la página de advertencia
+        return render(request, 'no_subprofile.html')
+
+    subprofiles = subprofile_data.data  # Usamos los datos JSON ya guardados
+    subprofile_id = subprofile_data.id  # Accedemos al id existente
 
     # Pasamos el id al contexto si lo necesitas en el HTML
     return render(request, 'subprofile.html', {'subprofiles': subprofiles, 'subprofile_id': subprofile_id})
