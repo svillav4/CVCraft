@@ -32,7 +32,7 @@
                         <p>Nombre: {{ subprofile.0.curriculum.informacion_personal.nombre }}</p>
                         <p>Teléfono: {{ subprofile.0.curriculum.informacion_personal.telefono }}</p>
                         <p>Email: {{ subprofile.0.curriculum.informacion_personal.email }}</p>
-                        <a href="{% url 'download' subprofile_id forloop.counter0 %}" class="button">Descargar</a>
+                        <a href="{% url 'download' id=subprofile_id indice=forloop.counter0 %}" class="button">Descargar</a>
                     </div>
                     <div class="card-right">
                         <p>Habilidades Técnicas: 
