@@ -14,13 +14,13 @@ class recomendacionesIA():
         promt = f"""
         Imagina que eres un consultor de empleo con la tarea de crear un currículum personalizado y llamativo basado en las ofertas actuales para la ocupación de '{self.profile.occupation_list[idx]}'. 
         
-        Si alguna de las habilidades o la experiencia no tiene relacion con {self.profile.occupation_list[idx]} entonces no lo pongas en json.
+        Si alguna de las habilidades, la experiencia, la educacion y/o la profesion de la referencia no tiene relacion con {self.profile.occupation_list[idx]} entonces no pongas en el json la informacion que no tiene relacion.
 
         Este currículum debe contener información personal del aspirante, como su nombre: '{self.profile.name}', su numero de telofono: {self.profile.PhoneNumber} e email: {self.profile.Email}, y debe resaltar las siguientes secciones clave:
 
-        1. **Habilidades Técnicas**: Incluye las habilidades más relevantes que requiere la ocupación y destaca las proporcionadas por el usuario: {self.profile.tecnical_information}. 
+        1. **Habilidades Técnicas**: Incluye las habilidades más relevantes que requiere la ocupación, que sean numerosas y destaca las proporcionadas por el usuario: {self.profile.tecnical_information}. 
         Además, sugiere las habilidades más demandadas actualmente en la industria para esta ocupación.
-        2. **Habilidades Blandas**: Selecciona habilidades blandas que se ajusten mejor a la ocupación, algunas sugeridas son: {self.profile.soft_skills}.
+        2. **Habilidades Blandas**: Selecciona bastantes habilidades blandas que se ajusten mejor a la ocupación, algunas sugeridas son: {self.profile.soft_skills}.
         3. **Idiomas**: Los idiomas que domina el aspirante: {self.profile.languages}.
         4. **Hobbies**: Incluye los pasatiempos del usuario: {self.profile.hobbies}.
         5. **Experiencia Laboral**: Resalta la experiencia laboral del aspirante, si la tiene: {self.profile.work_experience}.
@@ -35,7 +35,7 @@ class recomendacionesIA():
                                     -'hobbies': [], 
                                     -'experiencia_laboral': ['empresa': '', 'cargo': '', 'duracion': '', ...],
                                     -'educacion': ['titulo': '', 'institucion': '', 'ano': ,...],
-                                    -'referencias': ['nombre': '', 'relacion-profesion': '', 'contacto': , ...]
+                                    -'referencias': ['nombre': '', 'relacion_profesion': '', 'contacto': , ...]
         """
 
         msg = [

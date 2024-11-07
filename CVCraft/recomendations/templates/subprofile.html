@@ -56,8 +56,10 @@
                             {% for educacion in subprofile.0.curriculum.secciones.educacion %} Titulo: {{ educacion.titulo }} - Institucion: {{ educacion.institucion }} - Año: {{ educacion.ano }}{% if not forloop.last %}, {% endif %}{% endfor %}
                         </p>
                         <p>Referencias:
-                            {% for referencia in subprofile.0.curriculum.secciones.referencias %} Nombre: {{ referencia.nombre }} - Relacion: {{ referencia.relacion_profesion }} - Contacto: {{ referencia.contacto }} {{ referencia}}{% if not forloop.last %}, {% endif %}{% endfor %}
-                            
+                            {% for referencia in subprofile.0.curriculum.secciones.referencias %} Nombre: {{ referencia.nombre }} - Relacion: {{ referencia.relacion_profesion }} - Contacto: {{ referencia.contacto }} {% if not forloop.last %}, {% endif %}{% endfor %}
+                            {% if referencia.empty %}
+                                No hay referencias disponibles.
+                            {% endif %}
                         </p>
                     </div>
                 </div>
