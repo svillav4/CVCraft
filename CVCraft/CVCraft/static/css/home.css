@@ -13,6 +13,11 @@ body {
 
 /* Hero Section */
 .hero-section {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 99vw;
+  height: 100vw;
   background-image: url(../images/background1.jpeg);
   background-size: cover;
   background-position: center;
@@ -22,6 +27,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 60px;
+}
+
+.features-section {
+  margin-top: 90vh; /* Mueve estas secciones hacia abajo, justo debajo de .hero-section */
 }
 
 .hero-text h1 {
@@ -45,8 +55,12 @@ body {
   text-decoration: none;
 }
 
+.hero-text .btn {
+  outline: none;
+}
+
 .hero-text a:hover {
-  background-color: #e6be00;
+  background-color: #FFD700;
 }
 
 /* Features Section */
@@ -86,7 +100,7 @@ body {
 }
 
 .card2 {
-  background: #f8f9fa;
+  background: #f4f4f4;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
   border-radius: 8px;
@@ -121,7 +135,7 @@ body {
 
 /* Footer */
 .footer {
-  background-color: #e8e8e8;
+  background-color: #f4f4f4;
   color: #333;
 }
 

@@ -47,4 +47,4 @@ class recomendacionesIA():
             response_format={"type": "json_object"},
             max_tokens=2000
         )
-        return json.loads(response.choices[0].message.content) # Returns JSON formmated response.
+        return json.loads(response.choices[0].message.content)

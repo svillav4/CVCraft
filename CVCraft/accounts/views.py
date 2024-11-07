@@ -5,8 +5,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.shortcuts import redirect
 from django.db import IntegrityError
-from formulario.models import Profile  # Importa el modelo Profile
-# Create your views here.
+from formulario.models import Profile
 
 def signupaccount(request):
     if request.method == 'GET':
