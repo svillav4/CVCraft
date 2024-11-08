@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/create_profile.css' %}">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card p-4 shadow" style="max-width: 700px; margin: 0 auto;">
+            <h3 class="text-center mb-4">Crear reseña</h3>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.as_p }}
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Submit</button>
+            </form>
+        </div>
+    </div> 
+</body>
+{% endblock content %}

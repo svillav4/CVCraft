@@ -10,27 +10,26 @@
     <link rel="stylesheet" href="{% static 'css/create_profile.css' %}">
     {% endblock style %}
 </head>
-<div class="content">
-    <div class="card mb-3">
-        <div class="row g-0">
-            <div>
-                <div class="card-body">
-                    <h5 class="card-title">Crear perfil</h5>
-                    <p><small>Si en alguno de los campos necesita colocar 2 items o mas separelos por coma, por ejemplo: "Desarrollador, Diseñador, Administrador"</small></p>
-                    <p><small>Para las referencias ingresarlas de la siguiente manera, en caso de que sean mas de 2 se separa por coma y se sigue con el mismo formato: "Nombre: XXXXXXX - Relacion: XXXXXX - Numero de contacto: XXXXXX "</small></p>
-                    <p><small>Para la experiencia laboral por favor decir el nombre de la empresa, el cargo y el tiempo que se estuvo en la empresa.</small></p>
-                    <p><small>Para la educacion por favor decir el titulo, el lugar donde lo obtuvo y el año donde lo termino.</small></p>
-                    <p><small>Para los idiomas colocarlo de la siguiente manera: idioma(nivel).</small></p>
-                    <p class="card-text">
-                        <form method="POST" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            {{ form.as_p }}
-                            <button type="submit" class="btn btn-primary">Guardar</button>
-                        </form>
-                    </p>
+<body>
+    <div class="container mt-5">
+        <div class="card p-4 shadow" style="max-width: 700px; margin: 0 auto;">
+            <h3 class="text-center mb-4">Crear perfil</h3>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <ul>
+                        <li><small>Si en alguno de los campos necesitas colocar 2 o más items, sepáralos por coma. Ejemplo: "Desarrollador, Diseñador, Administrador".</small></li>
+                        <li><small>Para las referencias, ingrésalas de esta manera. En caso de que sean más de 2, sepáralas por coma y sigue el mismo formato: 
+                            <br>"Nombre: XXXXXXX - Relación-Profesion: XXXXXX - Número de contacto: XXXXXX".</small></li>
+                        <li><small>Para la experiencia laboral, menciona el nombre de la empresa, el cargo y el tiempo que estuviste en la empresa.</small></li>
+                        <li><small>Para la educación, menciona el título, el lugar donde lo obtuviste y el año en que lo terminaste.</small></li>
+                        <li><small>Para los idiomas, escríbelos de la siguiente manera: idioma (nivel). Ejemplo: "Inglés (avanzado)".</small></li>
+                    </ul>
+                    {{ form.as_p }}
                 </div>
-            </div>
+                <button type="submit" class="btn btn-primary w-100">Submit</button>
+            </form>
         </div>
-    </div>
-</div>
+    </div>    
+</body>
 {% endblock content %}

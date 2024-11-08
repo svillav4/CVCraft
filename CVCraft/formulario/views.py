@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from .forms import ProfileForm
-from .models import Profile  # Asegúrate de importar el modelo Profile
+from .models import Profile
 from recomendations.models import SubprofileData
 from recomendations.recomendacionesIA import recomendacionesIA
 def create_profile(request):
-    user = request.user  # Obtén el usuario autenticado
+    user = request.user
 
     # Intenta obtener el perfil existente o crear uno nuevo
     profile, created = Profile.objects.get_or_create(user=user)

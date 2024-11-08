@@ -7,10 +7,11 @@ from .models import SubprofileData
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from xhtml2pdf import pisa
-# Create your views here.
+from reviews.models import Reviews
 
 def home(request):
-    return render(request, 'home.html')
+    reviews = Reviews.objects.all()
+    return render(request, 'home.html',{'reviews':reviews})
 
 
 def subprofile(request):
@@ -18,7 +19,7 @@ def subprofile(request):
     # Verificamos si ya existen subperfiles guardados para este usuario
     subprofile_data = SubprofileData.objects.filter(user=request.user).first()
 
-    if not subprofile_data.data:
+    if subprofile_data is None or not subprofile_data.data:
         # Si no hay subperfiles, redirige a la página de advertencia
         return render(request, 'no_subprofile.html')
 
@@ -36,7 +37,7 @@ def selected_subprofile(request,subprofile_id, index):
 
 def download_pdf(request, id, indice):
     print(f"Subprofile ID: {id}, Index: {indice}")
-    # Suponiendo que obtienes el JSON de algún lugar
+
     subprofile = SubprofileData.objects.get(id=id).data[indice]  # Función que retorna el JSON
     
     # Crear respuesta HTTP para PDF

@@ -13,70 +13,69 @@
 <body>
 <div class="content">
 
-    <!-- Sección Hero -->
-    <div class="h-20 d-flex flex-column justify-content-md-end">
-        <section class="hero d-flex flex-column justify-content-md-center align-items-md-end mb-5 pb-5">
-            <div class="container text-center">
-                <h1 class="roboto-blackr">Adapta tu Hoja de Vida para el Éxito</h1>
-                <h2 class="roboto-medium">Crea un CV que se ajuste a cada vacante y destaca ante los reclutadores.</h2>
-                {% if user.is_authenticated %}
-                <a href="{% url 'create_profile' %}" class="btn btn-primary btn-lg">Llena el formulario</a>
-                {% else %}
-                <a href="{% url 'signupaccount' %}" class="btn btn-primary btn-lg">Comienza Ahora</a>
-                {% endif %}
-            </div>
-        </section>
-    </div>
+    <!-- Hero -->
+    <section class="hero-section d-flex justify-content-center align-items-center">
+        <div class="hero-text text-center">
+            <h1 class="roboto-black">Adapta tu Hoja de Vida para el Éxito</h1>
+            <h2 class="roboto-medium">Crea un CV que se ajuste a cada vacante y destaca ante los reclutadores.</h2>
+            <br><br>
+            {% if user.is_authenticated %}
+                <a href="{% url 'create_profile' %}" class="btn">Llena el formulario</a>
+            {% else %}
+                <a href="{% url 'signupaccount' %}" class="btn">Comienza Ahora</a>
+            {% endif %}
+        </div>
+    </section>
 
-    <!-- Características -->
-    <div class="d-flex flex-column justify-content-md-end">
-        <section id="features">
-            <div class="container">
-                <h2 class="text-center mb-4">Características</h2>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Adaptación Personalizada</h5>
-                                <p class="card-text">Ajusta tu hoja de vida para cada oferta de trabajo.</p>
-                            </div>
+    <!-- Caracteristicas -->
+    <section id="features" class="features-section py-5">
+        <div class="container text-center">
+            <h2 class="section-title">Características</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Adaptación Personalizada</h5>
+                            <p class="card-text">Ajusta tu hoja de vida para cada oferta de trabajo.</p>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Consejos de Expertos</h5>
-                                <p class="card-text">Accede a recomendaciones y consejos de expertos en reclutamiento.</p>
-                            </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Consejos de Expertos</h5>
+                            <p class="card-text">Accede a recomendaciones y consejos de expertos en reclutamiento.</p>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Interfaz Intuitiva</h5>
-                                <p class="card-text">Disfruta de una experiencia fácil y rápida para crear tu CV.</p>
-                            </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Interfaz Intuitiva</h5>
+                            <p class="card-text">Disfruta de una experiencia fácil y rápida para crear tu CV.</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
     <!-- Testimonios -->
-    <div class="h-100 flex-column justify-content-md-end">
-        <section id="testimonials" class="py-5 bg-light">
-            <div class="container">
-                <h2 class="text-center mb-4">Lo Que Dicen Nuestros Usuarios</h2>
-                <div class="row">
-                    <div class="col-md-6">
+    <section id="testimonials" class="testimonials-section py-5 bg-light">
+        <div class="container text-center">
+            <h2 class="section-title">Lo Que Dicen Nuestros Usuarios</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card2">
                         <blockquote class="blockquote">
                             <p class="mb-0">CVCraft me ayudó a adaptar mi CV y conseguí una entrevista en mi empresa soñada.</p>
                             <br>
                             <footer class="blockquote-footer">Juan Pérez</footer>
                         </blockquote>
                     </div>
-                    <div class="col-md-6">
+                </div>
+                <div class="col-md-6">
+                    <div class="card2">
                         <blockquote class="blockquote">
                             <p class="mb-0">Gracias a los consejos de expertos, mi hoja de vida ahora destaca más que nunca.</p>
                             <br>
@@ -84,16 +83,36 @@
                         </blockquote>
                     </div>
                 </div>
+                {% for review in reviews %}
+                    <div class="col-md-6">
+                        <div class="card2">
+                            <blockquote class="blockquote">
+                                <p class="mb-0">{{ review.review }}</p>
+                                <br>
+                                <footer class="blockquote-footer">{{ review.user }}
+                                    {% if user.is_authenticated and review.user == request.user %} <br>
+                                        <a href="{% url 'delete_review' review.id %}" class="btn text-btn">Borrar</a>
+                                    {% endif %}
+                                </footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% if user.is_authenticated %}
+                    <center><a href="{% url 'createreview' %}" class="btn text-btn">Crear una review</a></center>
+                {% endif %}
             </div>
-        </section>
-    </div>
+            
+        </div>
+    </section>
 
-    <!-- Pie de Página -->
-    <footer class="bg-light py-3">
+    <!-- Footer -->
+    <footer class="footer bg-light py-3">
         <div class="container text-center">
             <p>&copy; 2024 CVCraft. Todos los derechos reservados.</p>
         </div>
     </footer>
+
 </div>
 </body>
 </html>
